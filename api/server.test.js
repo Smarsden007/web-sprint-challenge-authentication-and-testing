@@ -1,6 +1,6 @@
 const request = require('supertest');
-test('sanity', () => {	const server = require('./server');
-  expect(true).toBe(false)	
+const server = require('./server');
+
 test('environment', () => {
 expect(process.env.NODE_ENV).toBe('testing')})
 
@@ -10,7 +10,7 @@ describe('[POST] /register', () => {  test('responds with error when no username
     const res = await request(server).post('/api/auth/register').send({
       username: '', 
       password: 'password',
-})	})
+})
     expect(res.body).toMatchObject({message: 'username and password required'})
 })
 test('responds with error when no password', async () => {
@@ -38,5 +38,5 @@ describe('[POST] /login', () => { test('responds with error when no username', a
       password: '',
 })
     expect(res.body).toMatchObject({message: 'username and password required'})
-})}) 
+})})
 
